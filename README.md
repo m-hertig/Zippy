@@ -18,12 +18,12 @@ For detailed Project description and video go to http://martinhertig.ch/zippy/
 - Instrument Cable 6,3mm jack
 
 ### Raspberry Pi
-Set up your raspberry pi with the latest Raspbian. Turn it into A Sythesizer by following (this)[http://andrewdotni.ch/blog/2015/02/28/midi-synth-with-raspberry-p/] tutorial
+Set up your raspberry pi with the latest Raspbian. Turn it into A Sythesizer by following this tutorial: http://andrewdotni.ch/blog/2015/02/28/midi-synth-with-raspberry-p/
 
 
 ### Arduino
 1. Load the Sketch "MIDIGuitar.ino" onto your Arduino.
-2. Turn your Arduino into a native MIDI-Controller - check out (this)[https://github.com/ddiakopoulos/hiduino] link
+2. Turn your Arduino into a native MIDI-Controller - check out link: https://github.com/ddiakopoulos/hiduino
 
 ### Sewing
 - To sew the notes follow these instructions (once per note): http://www.kobakant.at/DIY/?p=2620

@@ -23,7 +23,7 @@ Set up your raspberry pi with the latest Raspbian. Turn it into A Sythesizer by 
 
 ### Arduino
 1. Load the Sketch "MIDIGuitar.ino" onto your Arduino.
-2. Turn your Arduino into a native MIDI-Controller - check out link: https://github.com/ddiakopoulos/hiduino
+2. Turn your Arduino into a native MIDI-Controller - check out this: https://github.com/ddiakopoulos/hiduino
 
 ### Sewing
 - To sew the notes follow these instructions (once per note): http://www.kobakant.at/DIY/?p=2620

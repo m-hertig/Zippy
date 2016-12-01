@@ -11,7 +11,7 @@ For detailed Project description and video go to http://martinhertig.ch/zippy/
 - Arduino UNO
 - Raspberry Pi 2 or newer
 - 5V USB Battery Pack Raspberry Pi compatible
-(Most Battery Packs should be  ne. However some cheap ones might not work properly (to few Ampere or not consistent enough))
+(Most Battery Packs should be fine. However some cheap ones might not work properly (to few Ampere or not consistent enough))
 - Thin conductive thread
 - Basic Sewing skills
 - Guitar AMP

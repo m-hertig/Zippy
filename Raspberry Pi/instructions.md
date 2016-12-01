@@ -1,1 +1,0 @@
-Turn your Raspberry Pi into A Sythesizer by following (this)[http://andrewdotni.ch/blog/2015/02/28/midi-synth-with-raspberry-p/] tutorial

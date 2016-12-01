@@ -1,6 +1,6 @@
 /*
   Zippy Arduino Code
-  Analog serial values, deepest to highest: 169, 1023, 511, 339, 255, 203
+  Analog serial values, lowest to highest: 169, 1023, 511, 339, 255, 203
 */
 
 byte noteONCommand = 144;//note on command
@@ -10,7 +10,7 @@ byte controlChangeCmd = 176;
 
 // number of samples to keep track of.  The higher the number,
 // the more the readings will be smoothed, but the slower the output will
-// respond to the input. 
+// respond to the input.
 const int numReadings = 10;
 
 boolean noteHit[6] = {false,false,false,false,false,false};
@@ -46,15 +46,15 @@ void setup()
 {
   // initialize serial communication with computer:
   // Set MIDI baud rate:
-   Serial.begin(31250);  
-   // Serial.begin(9600);  
-  // initialize all the readings to 0: 
+   Serial.begin(31250);
+   // Serial.begin(9600);
+  // initialize all the readings to 0:
   //  for (int thisReading = 0; thisReading < numReadings; thisReading++)
-  //    readings[thisReading] = 0;          
+  //    readings[thisReading] = 0;
 }
 
 void loop() {
-  processFirstInput();       
+  processFirstInput();
   processSecondInput();
   processThirdInput();
 //  processFourthInput();
@@ -74,20 +74,20 @@ void processFirstInput() {
   // open g tuning: D-G-D-G-B-D
   // midi notes: D3=50 -> 50-55-62-67-71-74
   if (stringsSensorVal>166) {
-    //lastNoteWasHighest = false;  
+    //lastNoteWasHighest = false;
     if (stringsSensorVal > 166 && stringsSensorVal < 173) {
       hitNote(0);
-    } else if (stringsSensorVal > 1015) { 
+    } else if (stringsSensorVal > 1015) {
       hitNote(1);
-    } else if (stringsSensorVal > 508 && stringsSensorVal < 514) { 
+    } else if (stringsSensorVal > 508 && stringsSensorVal < 514) {
       hitNote(2);
-    } else if (stringsSensorVal > 338 && stringsSensorVal < 342) { 
+    } else if (stringsSensorVal > 338 && stringsSensorVal < 342) {
       hitNote(3);
-    } else if (stringsSensorVal > 253 && stringsSensorVal < 258) {  
-      hitNote(4); 
-    } else if (stringsSensorVal > 200 && stringsSensorVal < 206) { 
+    } else if (stringsSensorVal > 253 && stringsSensorVal < 258) {
+      hitNote(4);
+    } else if (stringsSensorVal > 200 && stringsSensorVal < 206) {
       hitNote(5);
-      //lastNoteWasHighest = true;    
+      //lastNoteWasHighest = true;
     }
   }
   for(int i=0;i<6;i++) {
@@ -107,22 +107,22 @@ void processSecondInput() {
   // open g tuning: D-G-D-G-B-D
   // midi notes: D3=50 -> 50-55-62-67-71-74
   if (stringsSensorVal>0) {
-    if (stringsSensorVal > 1015) { 
+    if (stringsSensorVal > 1015) {
       if (secondSensorHit[0]==false) {
         newChordIndex = 3;
         secondSensorHit[0]=true;
       }
-    } else if (stringsSensorVal > 508 && stringsSensorVal < 514) { 
+    } else if (stringsSensorVal > 508 && stringsSensorVal < 514) {
       if (secondSensorHit[1]==false) {
         newChordIndex = 2;
         secondSensorHit[1]=true;
       }
-    } else if (stringsSensorVal > 338 && stringsSensorVal < 342) { 
+    } else if (stringsSensorVal > 338 && stringsSensorVal < 342) {
        if (secondSensorHit[2]==false) {
         newChordIndex = 1;
         secondSensorHit[2]=true;
       }
-    } else if (stringsSensorVal > 253 && stringsSensorVal < 258) {  
+    } else if (stringsSensorVal > 253 && stringsSensorVal < 258) {
       if (secondSensorHit[3]==false) {
         newChordIndex = 0;
         secondSensorHit[3]=true;
@@ -143,7 +143,7 @@ void processSecondInput() {
     }
   }
 
-  
+
   for(int i=0;i<6;i++) {
     if(noteHit[i] && abs(millis()-noteHitTime[i])>noteDuration) {
       MIDImessage(noteONCommand, midiNotes[i], 0);//turn note off
@@ -172,16 +172,16 @@ void hitNote(int index) {
 
 void processThirdInput() {
   // smoothing sensor input
-  total= total - readings[index];         
-  readings[index] = analogRead(A4); 
-  total= total + readings[index];       
-  index = index + 1;                    
-  if (index >= numReadings) {            
-    index = 0;                           
+  total= total - readings[index];
+  readings[index] = analogRead(A4);
+  total= total + readings[index];
+  index = index + 1;
+  if (index >= numReadings) {
+    index = 0;
   }
   average = total / numReadings;
-  
-  if (average > minReading && average < maxReading) { 
+
+  if (average > minReading && average < maxReading) {
 
     byte noteUnconstrained = map(average, minReading, maxReading, 0, 127);//use the 0-900 range I measured
     byte note = constrain(noteUnconstrained,0,127);
@@ -211,10 +211,6 @@ void processThirdInput() {
       delay(5);
     }
   }
-  //} 
-  //delay(10);        // delay in between reads for stability     
+  //}
+  //delay(10);        // delay in between reads for stability
 }
-
-
-
-
